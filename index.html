@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Tracker</title>
+  <style>
+    /* 
+      red: #e6002d
+      blue: #0097e0
+      yellow: #ffe100
+      green: #009b6b
+      black: #221714
+      purple: #6456a3
+      white: #e2e2e2
+
+      INVERT: 
+      black
+
+      NORMAL:
+      everything else
+    */
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .main {
+      /* pc */
+      /* background: linear-gradient(#e6002d 37.5%, #0097e0 62.5%); */
+      /* mobile */
+      background: linear-gradient(#ffffff 27.5%, #ffffff 72.5%);
+      display: grid;
+      grid-template-rows: 45% 10% 45%;
+      height: 100%;
+      width: 100%;
+    }
+
+    .top, .bottom {
+      height: 100%;
+      width: 100%;
+    }
+
+    .middle {
+      color: white;
+      text-shadow: 0 0 3px #000000, 0 0 5px #000000;
+      font-size: 5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: visible;
+    }
+
+    /* filter: invert(); */
+    .top-img {
+      /* position: absolute;
+      right: 5px;
+      top: 5px; */
+      margin-right: auto;
+      margin-bottom: auto;
+      margin-left: 5px;
+      filter: invert() drop-shadow(0 0 0.15rem black);
+      /* z-index: 2; */
+    }
+
+    .bottom-img {
+      /* position: absolute;
+      bottom: 5px;
+      right: 5px; */
+      margin-left: auto;
+      margin-top: auto;
+      margin-right: 5px;
+      filter: invert() drop-shadow(0 0 0.15rem black);
+      /* z-index: 2; */
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="top"><br></div>
+    <div class="middle">
+      <img class="top-img" src="./assets/color.png" height="40" width="40" alt="color change">
+      <h2 class="memory">0</h2>
+      <img class="bottom-img" src="./assets/color.png" height="40" width="40" alt="color change">
+    </div>
+    <div class="bottom"><br></div>
+  </div>
+
+  <script>
+    const main = document.querySelector('.main');
+    const upper = document.querySelector('.top');
+    const lower = document.querySelector('.bottom');
+    const memDisplay = document.querySelector('.memory');
+    const upperStyle = document.querySelector('.top-img');
+    const lowerStyle = document.querySelector('.bottom-img');
+
+    let red = '#e6002d';
+    let blue = '#0097e0';
+    let yellow = '#ffe100';
+    let green = '#009b6b';
+    let black = '#221714';
+    let purple = '#6456a3';
+    let white = '#e2e2e2';
+
+    let memory = 0;
+    let topColor = yellow;
+    let botColor = blue;
+
+    let changeGradient = (topCol, botCol) => {
+      main.style.background = `linear-gradient(${topCol} 27.5%, ${botCol} 72.5%)`;
+    }
+
+    onload = e => {
+      e.preventDefault();
+      changeGradient(yellow, blue);
+    }
+
+    upper.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('testing Top Memory add');
+      if (memory < 10) memory++;
+      memDisplay.innerText = Math.abs(memory);
+    });
+
+    lower.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('testing Bottom Memory add');
+      if (memory > -10) memory--;
+      memDisplay.innerText = Math.abs(memory);
+    });
+
+    upperStyle.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('testing Top Style change');
+    });
+    
+    lowerStyle.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('testing Bottom Style change');
+    });
+  </script>
+</body>
+</html>
