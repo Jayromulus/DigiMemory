@@ -30,9 +30,6 @@
     }
 
     .main {
-      /* pc */
-      /* background: linear-gradient(#e6002d 37.5%, #0097e0 62.5%); */
-      /* mobile */
       background: linear-gradient(#ffffff 27.5%, #ffffff 72.5%);
       display: grid;
       grid-template-rows: 45% 10% 45%;
@@ -54,30 +51,26 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: visible;
     }
 
-    /* filter: invert(); */
+    .turn-arrow {
+      filter: invert() drop-shadow(0 0 0.15rem black);
+      rotate: 0deg;
+      rotate: 90deg;
+    }
+
     .top-img {
-      /* position: absolute;
-      right: 5px;
-      top: 5px; */
       margin-right: auto;
       margin-bottom: auto;
       margin-left: 5px;
       filter: invert() drop-shadow(0 0 0.15rem black);
-      /* z-index: 2; */
     }
 
     .bottom-img {
-      /* position: absolute;
-      bottom: 5px;
-      right: 5px; */
       margin-left: auto;
       margin-top: auto;
       margin-right: 5px;
       filter: invert() drop-shadow(0 0 0.15rem black);
-      /* z-index: 2; */
     }
 
     .bottom .left, .bottom .right, .top .left, .top .right {
@@ -97,7 +90,7 @@
     <div class="top"><div class="right">-</div><div class="left">+</div></div>
     <div class="middle">
       <img class="top-img" src="./assets/color.png" height="40" width="40" alt="color change">
-      <h2 class="memory">0</h2>
+      <img class="turn-arrow" src="./assets/arrow.png" height="40" width="40" alt="color change"><h2 class="memory">0</h2>
       <img class="bottom-img" src="./assets/color.png" height="40" width="40" alt="color change">
     </div>
     <div class="bottom"><div class="left">+</div><div class="right">-</div></div>
@@ -118,6 +111,7 @@
     const memDisplay = document.querySelector('.memory');
     const upperStyle = document.querySelector('.top-img');
     const lowerStyle = document.querySelector('.bottom-img');
+    const turnArrow = document.querySelector('.turn-arrow');
 
     const colorPicker = document.querySelector('.color-picker');
     const colorList = document.querySelector('.color-list');
@@ -136,6 +130,7 @@
     let topColor = colors.black;
     let botColor = colors.purple;
     let colorSelected = colors.black;
+    let turnPlayer = 'down';
 
     let changeGradient = (topCol, botCol) => {
       main.style.background = `linear-gradient(${topCol} 27.5%, ${botCol} 72.5%)`;
@@ -150,28 +145,64 @@
       e.preventDefault();
       console.log('testing Top Memory add');
       if (memory < 10) memory++;
-      memDisplay.innerText = Math.abs(memory);
+      if (memory > 0) {
+        turnArrow.style.rotate = '0deg';
+      }
+      if (memory < 0) {
+        turnArrow.style.rotate = '180deg';
+      }
+      if(memory === 0) {
+        turnArrow.style.rotate = '0deg';
+      }
+      memDisplay.innerText = memory;
     });
 
-    upperAdd.addEventListener('click', (e) => {
+    upperSub.addEventListener('click', (e) => {
       e.preventDefault();
       console.log('testing Top Memory add');
       if (memory > -10) memory--;
-      memDisplay.innerText = Math.abs(memory);
+      if (memory > 0) {
+        turnArrow.style.rotate = '180deg';
+      }
+      if (memory < 0) {
+        turnArrow.style.rotate = '180deg';
+      }
+      if(memory === 0) {
+        turnArrow.style.rotate = '0deg';
+      }
+      memDisplay.innerText = memory;
     });
 
     lowerAdd.addEventListener('click', (e) => {
       e.preventDefault();
       console.log('testing Bottom Memory add');
       if (memory > -10) memory--;
-      memDisplay.innerText = Math.abs(memory);
+      if (memory > 0) {
+        turnArrow.style.rotate = '0deg';
+      }
+      if (memory < 0) {
+        turnArrow.style.rotate = '180deg';
+      }
+      if(memory === 0) {
+        turnArrow.style.rotate = '180deg';
+      }
+      memDisplay.innerText = memory;
     });
     
     lowerSub.addEventListener('click', (e) => {
       e.preventDefault();
       console.log('testing Bottom Memory add');
       if (memory < 10) memory++;
-      memDisplay.innerText = Math.abs(memory);
+      if (memory > 0) {
+        turnArrow.style.rotate = '0deg';
+      }
+      if (memory < 0) {
+        turnArrow.style.rotate = '180deg';
+      }
+      if(memory === 0) {
+        turnArrow.style.rotate = '180deg';
+      }
+      memDisplay.innerText = memory;
     });
 
     upperStyle.addEventListener('click', (e) => {
