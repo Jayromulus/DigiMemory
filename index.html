@@ -90,6 +90,12 @@
     <div class="bottom"><br></div>
   </div>
 
+  <div class="colorPicker">
+    <div class="colorList">
+
+    </div>
+  </div>
+
   <script>
     const main = document.querySelector('.main');
     const upper = document.querySelector('.top');
@@ -116,7 +122,7 @@
 
     onload = e => {
       e.preventDefault();
-      changeGradient(yellow, blue);
+      changeGradient(black, purple);
     }
 
     upper.addEventListener('click', (e) => {
