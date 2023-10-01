@@ -5,364 +5,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Tracker</title>
-  <style>
-    /* 
-      red: #e6002d
-      blue: #0097e0
-      yellow: #ffe100
-      green: #009b6b
-      black: #221714
-      purple: #6456a3
-      white: #e2e2e2
-
-      INVERT: 
-      black
-
-      NORMAL:
-      everything else
-    */
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
-    }
-
-    .main {
-      background: linear-gradient(#ffffff 27.5%, #ffffff 72.5%);
-      display: grid;
-      grid-template-rows: 45% 10% 45%;
-      height: 100%;
-      width: 100%;
-    }
-
-    .top,
-    .bottom {
-      height: 100%;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 50% 50%;
-    }
-
-    .middle {
-      color: white;
-      text-shadow: 0 0 3px #000000, 0 0 5px #000000;
-      font-size: 5em;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .turn-arrow {
-      filter: invert() drop-shadow(0 0 0.15rem black);
-      rotate: 0deg;
-      rotate: 90deg;
-    }
-
-    .top-img {
-      margin-right: auto;
-      margin-bottom: auto;
-      margin-left: 5px;
-      filter: invert() drop-shadow(0 0 0.15rem black);
-    }
-
-    .bottom-img {
-      margin-left: auto;
-      margin-top: auto;
-      margin-right: 5px;
-      filter: invert() drop-shadow(0 0 0.15rem black);
-    }
-
-    .bottom .left,
-    .bottom .right,
-    .top .left,
-    .top .right {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      color: white;
-      text-shadow: 0 0 3px #000000, 0 0 5px #000000;
-      font-size: 10em;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .color-picker, .confirm-reset {
-      background-color: #000000e7;
-      position: absolute;
-      z-index: 2;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      display: none;
-      /* display flex when visible */
-      align-items: center;
-      justify-content: center;
-      color: white;
-    }
-
-    .exit, .exit-reset {
-      position: absolute;
-      top: 5px;
-      left: 20px;
-      font-size: 4.5rem;
-      font-family: Arial, Helvetica, sans-serif
-    }
-
-    .confirmation {
-      align-self: center;
-      justify-self: center;
-      font-size: 4em;
-      text-align: center;
-    }
-
-    .color-list {
-      display: grid;
-      grid-template-columns: 100%;
-      width: 80%;
-      height: 80%;
-    }
-
-    .color-card {
-      height: 90%;
-      width: 100%;
-      margin: 5% 0;
-      border-radius: 5px;
-      box-shadow: 0 0 1px 2px white;
-    }
-  </style>
+  <!-- ALL ICONS USED FROM GOOGLE DOCUMENTATION -->
+  <!-- https://fonts.google.com/icons?selected=Material+Symbols+Rounded:arrow_forward:FILL@0;wght@400;GRAD@0;opsz@24&icon.platform=web&icon.style=Rounded -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="apple-touch-icon" href="./assets/home.png">
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
 </head>
 
 <body>
   <div class="main">
+    <!-- TOP PLAYER CONTROLS -->
     <div class="top">
-      <div class="right">-</div>
-      <div class="left">+</div>
+      <div class="right drop-shadow">
+        <span class="material-symbols-rounded manage-memory">
+          remove
+        </span>
+      </div>
+      <div class="left drop-shadow">
+        <span class="material-symbols-rounded manage-memory">
+          add
+        </span>
+      </div>
     </div>
+
+    <!-- CENTRAL BAR -->
     <div class="middle">
-      <img class="top-img" src="./assets/color.png" height="40" width="40" alt="color change">
-      <img class="turn-arrow" src="./assets/arrow.png" height="40" width="40" alt="color change">
-      <h2 class="memory">0</h2>
-      <img class="bottom-img" src="./assets/color.png" height="40" width="40" alt="color change">
+      <!-- <img class="top-img" src="./assets/color.png" height="40" width="40" alt="color change"> -->
+      <span class="material-symbols-rounded top-img drop-shadow" style="font-size: 40px;">
+        colors
+      </span>
+      <!-- 
+
+        <span class="material-symbols-outlined">
+switch_access_shortcut
+</span>
+
+make buttons to auto pass turn without having to press the memory to a point
+       -->
+      <!-- <img class="turn-arrow" src="./assets/arrow.png" height="40" width="40" alt="color change"> -->
+      <span class="material-symbols-rounded turn-arrow drop-shadow" style="font-size: 40px;">
+        arrow_forward
+      </span>
+      <h2 class="memory drop-shadow">0</h2>
+      <!-- <img class="bottom-img" src="./assets/color.png" height="40" width="40" alt="color change"> -->
+      <span class="material-symbols-rounded bottom-img drop-shadow" style="font-size: 40px">
+        colors
+      </span>
     </div>
+
+    <!-- BOTTOM PLAYER CONTROLS -->
     <div class="bottom">
-      <div class="left">+</div>
-      <div class="right">-</div>
+      <!-- <div class="pass">Pass Turn</div> -->
+      <div class="left drop-shadow">
+        <span class="material-symbols-rounded manage-memory">
+          add
+        </span>
+      </div>
+      <div class="right drop-shadow">
+        <span class="material-symbols-rounded manage-memory">
+          remove
+        </span>
+      </div>
     </div>
   </div>
 
   <div class="color-picker">
-    <div class="exit">X</div>
-    <div class="color-list">
+    <div class="exit">
+      <span class="material-symbols-rounded" style="font-size: 1.25em;">close</span>
     </div>
+    <!-- This gets filled in through DOM using variable colors -->
+    <div class="color-list"></div>
   </div>
 
   <div class="confirm-reset">
-    <div class="exit-reset">X</div>
-    <p class="confirmation">Reset<br>Memory?</p>
+    <div class="exit-reset">
+      <span class="material-symbols-rounded" style="font-size: 1.25em;">close</span>
+    </div>
+    <p class="confirmation">
+      Memory Reset
+    </p>
   </div>
 
-  <script>
-    const main = document.querySelector('.main');
-    const upperAdd = document.querySelector('.top .left');
-    const upperSub = document.querySelector('.top .right');
-    const lowerAdd = document.querySelector('.bottom .left');
-    const lowerSub = document.querySelector('.bottom .right');
-    const memDisplay = document.querySelector('.memory');
-    const upperStyle = document.querySelector('.top-img');
-    const lowerStyle = document.querySelector('.bottom-img');
-    const turnArrow = document.querySelector('.turn-arrow');
-
-    const confirmReset = document.querySelector('.confirm-reset');
-    const closeReset = document.querySelector('.exit-reset');
-    const confirmation = document.querySelector('.confirmation');
-
-    const closePicker = document.querySelector('.exit');
-    const colorPicker = document.querySelector('.color-picker');
-    const colorList = document.querySelector('.color-list');
-
-    let colors = {
-      red: '#e6002d',
-      blue: '#0097e0',
-      yellow: '#ffe100',
-      green: '#009b6b',
-      black: '#221714',
-      purple: '#6456a3',
-      white: '#e2e2e2'
-    };
-
-    let memory = 0;
-    let topColor = colors.white;
-    let botColor = colors.white;
-    let colorSelected = colors.black;
-
-    /*
-    function calculateGradientStops(value) {
-      // Ensure the value is within the range of -10 to +10
-      value = Math.max(-10, Math.min(10, value));
-
-      // Calculate the percentage position for the color stops
-      const pos1 = 45 - (value > 8 ? 8.5 : value < -8 ? -8.5 : value) * 5;
-      const pos2 = 100 - (value > 8 ? 8.5 : value < -8 ? -8.5 : value) * 5;
-
-      main.style.background = `linear-gradient(to bottom, ${topColor} ${pos1}%, ${botColor} ${pos2}%)`;
-    }
-    */
-
-    let changeGradient = (topCol, botCol) => {
-      main.style.background = `linear-gradient(to bottom, ${topCol} 0%, ${botCol} 100%)`;
-    }
-
-    let generateColorCards = (side) => {
-      colorList.innerHTML = '';
-      Object.keys(colors).forEach((color, index) => {
-        let newCard = document.createElement('div');
-        newCard.classList.add('color-card');
-        newCard.style.backgroundColor = colors[color];
-        newCard.key = index;
-        newCard.addEventListener('click', e => {
-          e.preventDefault();
-          console.log(colors[color]);
-          side === 'upper' ? topColor = colors[color] : botColor = colors[color];
-          changeGradient(topColor, botColor);
-          colorPicker.style.display = 'none';
-        });
-        colorList.appendChild(newCard);
-      });
-    }
-
-    onload = e => {
-      e.preventDefault();
-      changeGradient(topColor, botColor);
-      const colorCards = generateColorCards('upper');
-    }
-
-    upperStyle.addEventListener('click', (e) => {
-      e.preventDefault();
-      // console.log('testing Top Style change');
-      colorPicker.style.display = 'flex';
-      generateColorCards('upper');
-    });
-
-    lowerStyle.addEventListener('click', (e) => {
-      e.preventDefault();
-      // console.log('testing Bottom Style change');
-      colorPicker.style.display = 'flex';
-      generateColorCards('lower');
-    });
-
-    closePicker.addEventListener('click', (e) => {
-      e.preventDefault();
-      colorPicker.style.display = 'none';
-    });
-
-    memDisplay.addEventListener('click', (e) => {
-      e.preventDefault();
-      confirmReset.style.display = 'flex';
-    });
-
-    closeReset.addEventListener('click', (e) => {
-      e.preventDefault();
-      confirmReset.style.display = 'none'
-    });
-
-    confirmation.addEventListener('click', (e) => {
-      e.preventDefault();
-      memory = 0;
-      // calculateGradientStops(memory);
-      memDisplay.innerText = 0;
-      turnArrow.style.rotate = '90deg';
-      confirmReset.style.display = 'none';
-    })
-
-    upperAdd.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (memory > -10) memory--;
-      console.log('MEMORY: ', memory)
-      if (memory < 0) {
-        turnArrow.style.rotate = '0deg';
-        memDisplay.style.rotate = '180deg';
-      }
-      if (memory > 0) {
-        turnArrow.style.rotate = '180deg';
-        memDisplay.style.rotate = '0deg';
-      }
-      if (memory === 0) {
-        turnArrow.style.rotate = '0deg';
-        memDisplay.style.rotate = '180deg';
-      }
-      memDisplay.innerText = Math.abs(memory);
-      // calculateGradientStops(memory)
-    	Math.abs(memory) === 9 || Math.abs(memory) === 6 ? memDisplay.style.textDecoration = 'underline' : memDisplay.style.textDecoration = 'none';
-    });
-
-    upperSub.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (memory < 10) memory++;
-      console.log('MEMORY: ', memory)
-      if (memory < 0) {
-        turnArrow.style.rotate = '0deg';
-        memDisplay.style.rotate = '180deg';
-      }
-      if (memory > 0) {
-        turnArrow.style.rotate = '180deg';
-        memDisplay.style.rotate = '0deg';
-      }
-      if (memory === 0) {
-        turnArrow.style.rotate = '0deg';
-        memDisplay.style.rotate = '180deg';
-      }
-      memDisplay.innerText = Math.abs(memory);
-      // calculateGradientStops(memory)
-    	Math.abs(memory) === 9 || Math.abs(memory) === 6 ? memDisplay.style.textDecoration = 'underline' : memDisplay.style.textDecoration = 'none';
-    });
-
-    lowerAdd.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (memory < 10) memory++;
-      console.log('MEMORY: ', memory)
-      if (memory < 0) {
-        turnArrow.style.rotate = '0deg';
-        memDisplay.style.rotate = '180deg';
-      }
-      if (memory > 0) {
-        turnArrow.style.rotate = '180deg';
-        memDisplay.style.rotate = '0deg';
-      }
-      if (memory === 0) {
-        turnArrow.style.rotate = '180deg';
-        memDisplay.style.rotate = '0deg';
-      }
-      memDisplay.innerText = Math.abs(memory);
-      // calculateGradientStops(memory)
-    	Math.abs(memory) === 9 || Math.abs(memory) === 6 ? memDisplay.style.textDecoration = 'underline' : memDisplay.style.textDecoration = 'none';
-    });
-
-    lowerSub.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (memory > -10) memory--;
-      console.log('MEMORY: ', memory)
-      if (memory < 0) {
-        turnArrow.style.rotate = '0deg';
-        memDisplay.style.rotate = '180deg';
-      }
-      if (memory > 0) {
-        turnArrow.style.rotate = '180deg';
-        memDisplay.style.rotate = '0deg';
-      }
-      if (memory === 0) {
-        turnArrow.style.rotate = '180deg';
-        memDisplay.style.rotate = '0deg';
-      }
-      memDisplay.innerText = Math.abs(memory);
-      // calculateGradientStops(memory)
-    	Math.abs(memory) === 9 || Math.abs(memory) === 6 ? memDisplay.style.textDecoration = 'underline' : memDisplay.style.textDecoration = 'none';
-    });
-  </script>
+  <script src="./main.js"></script>
 </body>
 
 </html>

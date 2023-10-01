@@ -1,0 +1,152 @@
+/* 
+      white: #e2e2e2
+      red: #e6002d
+      blue: #0097e0
+      green: #009b6b
+      yellow: #ffe100
+      black: #221714
+      purple: #6456a3
+
+      INVERT: 
+      black
+
+      NORMAL:
+      everything else
+    */
+
+    body {
+      margin: 0;
+      padding: 0;
+      /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+      font-family: 'Noto Sans JP', sans-serif;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    .main {
+      background: linear-gradient(#ffffff 27.5%, #ffffff 72.5%);
+      display: grid;
+      grid-template-rows: 45% 10% 45%;
+      height: 100%;
+      width: 100%;
+    }
+
+    .top,
+    .bottom {
+      height: 100%;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+
+    .middle {
+      color: white;
+      text-shadow: 0 0 3px #000000, 0 0 5px #000000;
+      font-size: 5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .turn-arrow {
+      /* filter: invert() drop-shadow(0 0 0.15rem black); */
+      rotate: 0deg;
+      rotate: 0deg;
+    }
+
+    .top-img {
+      margin-right: auto;
+      margin-bottom: auto;
+      margin-left: 5px;
+    }
+
+    .bottom-img {
+      margin-left: auto;
+      margin-top: auto;
+      margin-right: 5px;
+    }
+
+    .drop-shadow {
+      filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 0.5));
+    }
+
+    .bottom .left,
+    .bottom .right,
+    .top .left,
+    .top .right {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      color: white;
+      text-shadow: 0 0 3px #000000, 0 0 5px #000000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .manage-memory {
+      font-size: 8em;
+    }
+    .pass {
+      width: 100%;
+      font-size: 3em;
+      grid-column: span 2;
+      display: flex;
+      align-items:end;
+      height: em;
+      justify-content: center;
+    }
+
+    .color-picker, .confirm-reset {
+      background-color: #000000e7;
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: none;
+      /* display flex when visible */
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .exit, .exit-reset {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 4.5rem;
+      font-family: Arial, Helvetica, sans-serif
+    }
+
+    .confirmation {
+      align-self: center;
+      justify-self: center;
+      font-size: 4em;
+      text-align: center;
+    }
+
+    .color-list {
+      display: grid;
+      grid-template-columns: 100%;
+      width: 80%;
+      height: 80%;
+    }
+
+    .color-card {
+      height: 90%;
+      width: 100%;
+      margin: 5% 0;
+      border-radius: 5px;
+      box-shadow: 0 0 1px 2px white;
+    }
+
+    .confirmation {
+      background-color: powderblue;
+      margin: 0 .5em;
+      padding: 0.5em 0;
+      border-radius: 10px;
+      text-shadow: #000000 0 0 5px;
+      background: linear-gradient(135deg, #e2e2e2c0, #e6002ec0, #6456a3c0, #0097e0c0, #009b6bc0, #ffe100c0,  #221714c0);
+    }
